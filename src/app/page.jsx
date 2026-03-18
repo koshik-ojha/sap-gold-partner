@@ -1,7 +1,10 @@
 "use client";
 import React, { useState } from 'react';
 import { CheckCircle, ArrowRight, BarChart3, Clock, TrendingUp, Package, PoundSterling, Users, Building, Star, Quote, ChevronDown, ChevronUp, Zap, Target, AlertTriangle, FileText, Phone, Mail, MapPin, Linkedin, Play } from 'lucide-react';
-
+import ERPReadinessScorecard from '@/components/ERPReadinessScorecard';
+import Image from 'next/image';
+import Logo from '@assets/images/logo.svg';
+import whiteLogo from '@assets/images/white-logo.svg';
 const ERPScorecardLandingPage = () => {
   const [openFaq, setOpenFaq] = useState(null);
   const [showScorecard, setShowScorecard] = useState(false);
@@ -131,13 +134,7 @@ const ERPScorecardLandingPage = () => {
       <nav className="bg-white border-b border-gray-100 sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-orange-600 to-amber-500 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">ST</span>
-            </div>
-            <div>
-              <p className="font-bold text-gray-800 text-sm">Silver Touch</p>
-              <p className="text-xs text-gray-500">SAP Gold Partner</p>
-            </div>
+            <Image src={Logo} alt="Silver Touch Logo" width={150} height={32} />
           </div>
           <button
             onClick={scrollToScorecard}
@@ -418,7 +415,7 @@ const ERPScorecardLandingPage = () => {
 
       {/* Scorecard Embed Section */}
       <section id="scorecard-section" className="py-20 px-4 bg-slate-900">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-white mb-4">
             Ready to See Your Score?
           </h2>
@@ -464,22 +461,10 @@ const ERPScorecardLandingPage = () => {
               </button>
             </div>
           ) : (
-            <div className="bg-white rounded-3xl p-8 shadow-2xl text-left">
-              <div className="text-center mb-8">
-                <p className="text-gray-600">
-                  [Scorecard Component Would Render Here]
-                </p>
-                <p className="text-sm text-gray-500 mt-2">
-                  In production, this would load the interactive ERP Readiness Scorecard component.
-                </p>
-              </div>
-              <button
-                onClick={() => setShowScorecard(false)}
-                className="text-orange-600 hover:text-orange-700 text-sm"
-              >
-                ← Back to overview
-              </button>
-            </div>
+            <ERPReadinessScorecard 
+              embedded={true} 
+              onClose={() => setShowScorecard(false)} 
+            />
           )}
         </div>
       </section>
@@ -561,18 +546,12 @@ const ERPScorecardLandingPage = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-slate-900 text-white py-16 px-4">
-        <div className="max-w-6xl mx-auto">
+      <footer className="bg-slate-900 text-white py-16">
+        <div className="max-w-6xl mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8 mb-12">
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-10 h-10 bg-gradient-to-br from-orange-600 to-amber-500 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">ST</span>
-                </div>
-                <div>
-                  <p className="font-bold">Silver Touch</p>
-                  <p className="text-xs text-slate-400">SAP Gold Partner</p>
-                </div>
+                <Image src={whiteLogo} alt="Silver Touch Logo" width={150} height={24} />
               </div>
               <p className="text-slate-400 text-sm">
                 Helping UK SMEs transform their operations with intelligent ERP solutions since 1992.
